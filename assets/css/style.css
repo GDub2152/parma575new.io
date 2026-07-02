@@ -41,7 +41,17 @@ img{max-width:100%;display:block}
   flex-wrap:wrap;
 }
 .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:1px;color:white}
-.brand-icon{font-size:38px;color:var(--blue)}
+.brand-icon{
+  width:40px;
+  height:40px;
+  object-fit:contain;
+  flex-shrink:0;
+  vertical-align:middle;
+}
+.brand:hover .brand-icon{
+  transform:scale(1.08) rotate(-4deg);
+  transition:transform .25s ease;
+}
 .brand span{display:block;font-size:30px;line-height:1}
 .brand small{display:block;color:var(--blue);font-size:14px;letter-spacing:3px}
 .nav-links{display:flex;align-items:center;gap:8px}
