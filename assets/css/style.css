@@ -42,8 +42,8 @@ img{max-width:100%;display:block}
 }
 .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:1px;color:white}
 .brand-icon{
-    width:24px;
-    height:24px;
+    width:28px;
+    height:28px;
     object-fit:contain;
     margin-right:8px;
     flex-shrink:0;
