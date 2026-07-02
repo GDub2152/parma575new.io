@@ -42,11 +42,13 @@ img{max-width:100%;display:block}
 }
 .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:1px;color:white}
 .brand-icon{
-  width:40px;
-  height:40px;
-  object-fit:contain;
-  flex-shrink:0;
-  vertical-align:middle;
+    width:24px;
+    height:24px;
+    object-fit:contain;
+    margin-right:8px;
+    flex-shrink:0;
+    vertical-align:middle;
+}
 }
 .brand:hover .brand-icon{
   transform:scale(1.08) rotate(-4deg);
