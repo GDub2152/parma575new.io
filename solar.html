@@ -366,6 +366,19 @@
     background:#020c16;
   }
   .solar-page .card {overflow:hidden;}
+  .space-weather-link {
+    display:inline-block;
+    margin-top:12px;
+    color:#9edbff;
+    font-weight:700;
+    text-decoration:none;
+  }
+  .space-weather-link:hover,
+  .space-weather-link:focus {
+    color:#ffffff;
+    text-decoration:underline;
+  }
+
   @media(max-width:1050px){
     .solar-grid,.propagation-dial,.conditions-guide,.info-columns,.live-solar-widgets{grid-template-columns:1fr 1fr;}
   }
@@ -424,6 +437,7 @@
             </div>
           </div>
           <p class="last-updated">Updated: <span id="solarTime">--:--</span> UTC</p>
+          <a class="space-weather-link" href="https://www.swpc.noaa.gov/" target="_blank" rel="noopener">View NOAA Space Weather ↗</a>
         </div>
 
         <!-- GMRS Band Card -->
@@ -447,6 +461,7 @@
             <div class="status-badge" id="statusGMRS">Computing...</div>
           </div>
           <p class="band-notes">• UHF Personal Radio Service • Line-of-sight propagation • Excellent for local repeater use • Weather resistant</p>
+          <a class="space-weather-link" href="https://www.swpc.noaa.gov/communities/radio-communications" target="_blank" rel="noopener">Space weather for radio communications ↗</a>
         </div>
 
         <!-- 2 Meter Band Card -->
@@ -470,6 +485,7 @@
             <div class="status-badge" id="status2m">Computing...</div>
           </div>
           <p class="band-notes">• VHF amateur band • Excellent for local repeaters • Line-of-sight communication • Popular for emergency ops</p>
+          <a class="space-weather-link" href="https://www.swpc.noaa.gov/communities/radio-communications" target="_blank" rel="noopener">Space weather for radio communications ↗</a>
         </div>
 
         <!-- 70cm Band Card -->
@@ -493,6 +509,7 @@
             <div class="status-badge" id="status70cm">Computing...</div>
           </div>
           <p class="band-notes">• UHF amateur band • High data rates • Shorter range than 2m • Satellite communication capable</p>
+          <a class="space-weather-link" href="https://www.swpc.noaa.gov/communities/radio-communications" target="_blank" rel="noopener">Space weather for radio communications ↗</a>
         </div>
       </div>
 
@@ -576,19 +593,19 @@
         <div class="live-solar-widgets">
           <div class="solar-widget-frame">
             <h3>HamQSL Solar-Terrestrial Data</h3>
-            <img src="https://www.hamqsl.com/solar101vhf.php" alt="HamQSL live solar terrestrial VHF propagation data" loading="lazy">
+            <a href="https://www.hamqsl.com/solar.html" target="_blank" rel="noopener"><img src="https://www.hamqsl.com/solar101vhf.php" alt="HamQSL live solar terrestrial VHF propagation data" loading="lazy"></a>
           </div>
           <div class="solar-widget-frame">
             <h3>NOAA D-Region Absorption</h3>
-            <img src="https://services.swpc.noaa.gov/images/animations/d-rap/global/d-rap/latest.png" alt="NOAA D-region absorption map" loading="lazy">
+            <a href="https://www.swpc.noaa.gov/products/d-region-absorption-predictions-d-rap" target="_blank" rel="noopener"><img src="https://services.swpc.noaa.gov/images/animations/d-rap/global/d-rap/latest.png" alt="NOAA D-region absorption map" loading="lazy"></a>
           </div>
           <div class="solar-widget-frame">
             <h3>NOAA Aurora Forecast</h3>
-            <img src="https://services.swpc.noaa.gov/images/aurora-forecast-northern-hemisphere.jpg" alt="NOAA aurora forecast northern hemisphere" loading="lazy">
+            <a href="https://www.swpc.noaa.gov/products/aurora-30-minute-forecast" target="_blank" rel="noopener"><img src="https://services.swpc.noaa.gov/images/aurora-forecast-northern-hemisphere.jpg" alt="NOAA aurora forecast northern hemisphere" loading="lazy"></a>
           </div>
           <div class="solar-widget-frame">
             <h3>NOAA X-Ray Flux</h3>
-            <img src="https://services.swpc.noaa.gov/images/goes-xray-flux.gif" alt="NOAA GOES x-ray flux" loading="lazy">
+            <a href="https://www.swpc.noaa.gov/products/goes-x-ray-flux" target="_blank" rel="noopener"><img src="https://services.swpc.noaa.gov/images/goes-xray-flux.gif" alt="NOAA GOES x-ray flux" loading="lazy"></a>
           </div>
         </div>
       </div>
