@@ -41,23 +41,17 @@ img{max-width:100%;display:block}
   flex-wrap:wrap;
 }
 .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:1px;color:white}
-.brand-icon{
-    width:50px;
-    height:50px;
+.brand-icon,.site-logo{
+    width:auto;
+    height:70px;
+    max-width:90px;
     object-fit:contain;
     margin-right:8px;
     flex-shrink:0;
     vertical-align:middle;
 }
-}
-.brand:hover .brand-icon{
-    width:22px;
-    height:22px;
-    object-fit:contain;
-    margin-right:8px;
-    flex-shrink:0;
-    vertical-align:middle;
-}
+
+.brand:hover .site-logo{filter:drop-shadow(0 0 8px rgba(99,197,255,.55));}
 .brand span{display:block;font-size:30px;line-height:1}
 .brand small{display:block;color:var(--blue);font-size:14px;letter-spacing:3px}
 .nav-links{display:flex;align-items:center;gap:8px}
@@ -225,8 +219,28 @@ img{max-width:100%;display:block}
   .section{padding:40px 16px}
 }
 
+/* Compact repeater status card on the index page */
+.repeater-status-widget{overflow:hidden}
+.repeater-status-widget h3{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.repeater-status-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin-top:12px;
+}
+.repeater-status-grid div{
+  background:rgba(255,255,255,.08);
+  border-radius:8px;
+  padding:10px 8px;
+  text-align:center;
+  min-width:0;
+}
+.repeater-status-grid span{display:block;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.5px;line-height:1.1}
+.repeater-status-grid b{display:block;font-size:clamp(18px,2.1vw,24px);line-height:1.05;margin:4px 0 1px;white-space:nowrap}
+.repeater-status-grid small{display:block;color:#9edbff;font-weight:700;line-height:1.1}
 
-.site-logo {
-    height: 70px;
-    width: auto;
+@media(max-width:500px){
+  .repeater-status-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .repeater-status-grid div{padding:8px 6px}
+  .repeater-status-grid b{font-size:18px}
 }
