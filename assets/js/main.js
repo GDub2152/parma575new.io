@@ -38,16 +38,6 @@ function setupWeather() {
     if (el) el.textContent = value;
   };
 
-  const unavailable = () => {
-    setText("weatherTemp", "--");
-    setText("weatherDesc", "Weather temporarily unavailable");
-    setText("humidity", "--");
-    setText("wind", "--");
-    setText("barometer", "--");
-    setText("feelsLike", "--");
-    setText("weatherIcon", "⚠️");
-  };
-
   const weatherCodes = {
     0: ["Clear Sky", "☀️"], 1: ["Mainly Clear", "🌤️"], 2: ["Partly Cloudy", "⛅"], 3: ["Overcast", "☁️"],
     45: ["Fog", "🌫️"], 48: ["Rime Fog", "🌫️"], 51: ["Light Drizzle", "🌧️"], 53: ["Drizzle", "🌧️"],
@@ -69,10 +59,37 @@ function setupWeather() {
     }
   }
 
+  function unavailable() {
+    setText("weatherTemp", "--°F");
+    setText("weatherDesc", "Weather temporarily unavailable");
+    setText("humidity", "--");
+    setText("wind", "--");
+    setText("barometer", "--");
+    setText("feelsLike", "--");
+    setText("weatherIcon", "⚠️");
+    setText("weatherStatus", "Offline");
+    setText("weatherUpdated", "Unable to update");
+  }
+
+  function renderForecast(daily) {
+    const target = document.getElementById("weatherForecast");
+    if (!target || !daily || !daily.time) return;
+    const dayNames = ["Today", "Tomorrow", "Next Day"];
+    target.innerHTML = daily.time.slice(0, 3).map((date, index) => {
+      const hi = Math.round(daily.temperature_2m_max[index]);
+      const lo = Math.round(daily.temperature_2m_min[index]);
+      const code = daily.weather_code ? daily.weather_code[index] : null;
+      const icon = (weatherCodes[Number(code)] || ["", "🌤️"])[1];
+      return `<div><small>${dayNames[index]}</small><b>${icon} ${hi}°/${lo}°</b></div>`;
+    }).join("");
+  }
+
   async function updateWeather() {
-    const url = "https://api.open-meteo.com/v1/forecast?latitude=41.4048&longitude=-81.7229&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,pressure_msl&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FNew_York";
+    setText("weatherStatus", "Updating");
+    const openMeteoUrl = "https://api.open-meteo.com/v1/forecast?latitude=41.4048&longitude=-81.7229&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,pressure_msl&daily=weather_code,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FNew_York";
+
     try {
-      const data = await fetchJson(url);
+      const data = await fetchJson(openMeteoUrl);
       const current = data.current || {};
       const temp = Number(current.temperature_2m);
       const feels = Number(current.apparent_temperature);
@@ -82,13 +99,16 @@ function setupWeather() {
       if (Number.isFinite(pressure)) pressure = pressure / 33.8638866667;
 
       const condition = weatherCodes[Number(current.weather_code)] || ["Current Conditions", "🌤️"];
-      setText("weatherTemp", Number.isFinite(temp) ? `${Math.round(temp)}°F` : "--");
+      setText("weatherTemp", Number.isFinite(temp) ? `${Math.round(temp)}°F` : "--°F");
       setText("weatherDesc", condition[0]);
       setText("weatherIcon", condition[1]);
       setText("humidity", Number.isFinite(humidity) ? `${Math.round(humidity)}%` : "--");
       setText("wind", Number.isFinite(wind) ? `${Math.round(wind)} mph` : "--");
       setText("barometer", Number.isFinite(pressure) ? `${pressure.toFixed(2)} inHg` : "--");
       setText("feelsLike", Number.isFinite(feels) ? `${Math.round(feels)}°F` : "--");
+      renderForecast(data.daily);
+      setText("weatherStatus", "Live");
+      setText("weatherUpdated", `Updated ${new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`);
     } catch (error) {
       console.error("Weather update failed:", error);
       unavailable();
@@ -98,7 +118,6 @@ function setupWeather() {
   updateWeather();
   setInterval(updateWeather, 15 * 60 * 1000);
 }
-
 function setupGalleryLightbox() {
   const lightbox = document.querySelector(".lightbox");
   const lightboxImg = document.querySelector(".lightbox img");
