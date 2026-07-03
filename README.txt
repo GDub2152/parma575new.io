@@ -13,5 +13,3 @@ Provided links included:
 - GoFundMe: https://www.gofundme.com/f/Parma-575-GMRS-repeater-covering-Northern-Ohio
 - Discord: https://discord.gg/JGJtjd6fC
 - Email: n8pps@yahoo.com
-
-Bigfoot SVG is the logo at the top.
