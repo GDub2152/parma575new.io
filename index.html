@@ -24,8 +24,8 @@
       </div>
     </div>
 
-    <div class="status-stack">
-      <div class="widget repeater-status-widget">
+    <div class="status-stack dashboard-stack">
+      <div class="widget repeater-status-widget dashboard-card repeater-card-top">
         <h3>Repeater Status <span class="online">● Online</span></h3>
         <div class="repeater-status-grid">
           <div><span>Downlink</span><b>462.575</b><small>MHz</small></div>
@@ -35,29 +35,31 @@
         </div>
       </div>
 
-      <div class="widget">
+      <div class="widget weather-embed-card dashboard-card weather-card-top">
+        <h3>Parma Weather</h3>
+        <a class="weatherwidget-io" href="https://forecast7.com/en/41d40n81d72/parma/?unit=us" data-label_1="PARMA" data-label_2="WEATHER" data-font="Roboto" data-icons="Climacons Animated" data-theme="weather_one">PARMA WEATHER</a>
+        <div class="weather-source-line"><a href="https://forecast7.com/en/41d40n81d72/parma/?unit=us" target="_blank" rel="noopener">Open full Parma forecast</a></div>
+      </div>
+
+      <div class="widget dashboard-card time-card-top">
         <h3>Current Time</h3>
-        <div class="time-grid">
+        <div class="time-grid dashboard-time-grid">
           <div class="time-box"><h4>Local Time</h4><div id="localTime" class="clock">--:--:--</div></div>
-          <div class="time-box"><h4>UTC (Zulu)</h4><div id="utcTime" class="clock">--:--:-- UTC</div></div>
+          <div class="time-box"><h4>UTC / Zulu</h4><div id="utcTime" class="clock">--:--:-- UTC</div></div>
         </div>
       </div>
 
-      <div class="widget">
-        <h3>Current Weather</h3>
-        <div class="weather-row">
-          <div class="weather-icon" id="weatherIcon">⛅</div>
-          <div class="temp" id="weatherTemp">Loading...</div>
-          <div><span id="weatherDesc">Loading...</span><br><a href="https://forecast.weather.gov/MapClick.php?lat=41.4048&lon=-81.7229" target="_blank" rel="noopener">Parma, OH</a></div>
-        </div>
-        <div class="mini-grid">
-          <div>Humidity<br><b id="humidity">--</b></div>
-          <div>Wind<br><b id="wind">--</b></div>
-          <div>BARO<br><b id="barometer">--</b></div>
-          <div>Feels Like<br><b id="feelsLike">--</b></div>
-        </div>
-      </div>
+      <a class="widget dashboard-card dashboard-link-card solar-card-top" href="solar.html">
+        <h3>Solar Conditions</h3>
+        <p>View solar activity, band conditions, and radio propagation information.</p>
+        <span>Open Solar Page →</span>
+      </a>
 
+      <a class="widget dashboard-card dashboard-link-card repeater-info-card-top" href="repeater.html">
+        <h3>Repeater Information</h3>
+        <p>Coverage, programming information, tones, and technical repeater details.</p>
+        <span>Open Repeater Page →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -90,6 +92,7 @@
 </section>
 <div id="site-footer"></div>
 <script src="assets/js/components.js"></script>
+<script src="https://weatherwidget.io/js/widget.min.js"></script>
 <script src="assets/js/main.js"></script>
 
 </body>
