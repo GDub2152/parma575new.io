@@ -48,6 +48,16 @@
     </div>
 
     <div class="status-stack">
+      <div class="widget repeater-status-widget">
+        <h3>Repeater Status <span class="online">● Online</span></h3>
+        <div class="repeater-status-grid">
+          <div><span>Downlink</span><b>462.575</b><small>MHz</small></div>
+          <div><span>Uplink</span><b>467.575</b><small>MHz</small></div>
+          <div><span>Offset</span><b>+5.0</b><small>MHz</small></div>
+          <div><span>PL Tone</span><b>79.7</b><small>Hz</small></div>
+        </div>
+      </div>
+
       <div class="widget">
         <h3>Current Time</h3>
         <div class="time-grid">
@@ -71,15 +81,6 @@
         </div>
       </div>
 
-      <div class="widget repeater-status-widget">
-        <h3>Repeater Status <span class="online">● Online</span></h3>
-        <div class="repeater-status-grid">
-          <div><span>Downlink</span><b>462.575</b><small>MHz</small></div>
-          <div><span>Uplink</span><b>467.575</b><small>MHz</small></div>
-          <div><span>Offset</span><b>+5.0</b><small>MHz</small></div>
-          <div><span>PL Tone</span><b>79.7</b><small>Hz</small></div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -125,38 +126,83 @@
 <script>
 async function updateWeather() {
   const setText = (id, value) => { const el = document.getElementById(id); if (el) el.textContent = value; };
-  const url = "https://api.open-meteo.com/v1/forecast?latitude=41.4048&longitude=-81.7229&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,pressure_msl,surface_pressure&temperature_unit=fahrenheit&wind_speed_unit=mph&pressure_unit=inhg&timezone=America%2FNew_York";
-  try {
-    const response = await fetch(url, { cache: "no-store" });
-    if (!response.ok) throw new Error("Weather API error");
-    const data = await response.json();
-    const current = data.current || {};
-    setText("weatherTemp", Math.round(current.temperature_2m) + "°F");
-    setText("feelsLike", Math.round(current.apparent_temperature) + "°F");
-    setText("humidity", Math.round(current.relative_humidity_2m) + "%");
-    setText("wind", Math.round(current.wind_speed_10m) + " mph");
-    // Open-Meteo usually returns pressure in inHg when pressure_unit=inhg is used.
-    // If a browser/API ever returns hPa instead, convert it to inches of mercury.
-    let baro = Number(current.pressure_msl ?? current.surface_pressure);
-    if (Number.isFinite(baro) && baro > 100) baro = baro / 33.8638866667;
-    setText("barometer", Number.isFinite(baro) ? baro.toFixed(2) + " inHg" : "--");
-    const codes = {
-      0:["Clear Sky","☀️"],1:["Mainly Clear","🌤️"],2:["Partly Cloudy","⛅"],3:["Overcast","☁️"],45:["Foggy","🌫️"],48:["Rime Fog","🌫️"],
-      51:["Light Drizzle","🌧️"],53:["Drizzle","🌧️"],55:["Heavy Drizzle","🌧️"],61:["Light Rain","🌦️"],63:["Rain","🌧️"],65:["Heavy Rain","⛈️"],
-      71:["Light Snow","🌨️"],73:["Snow","❄️"],75:["Heavy Snow","❄️"],77:["Snow Grains","🌨️"],80:["Rain Showers","🌦️"],81:["Rain Showers","🌧️"],82:["Heavy Showers","⛈️"],
-      85:["Snow Showers","🌨️"],86:["Heavy Snow Showers","❄️"],95:["Thunderstorm","⛈️"],96:["Thunderstorm with Hail","⛈️"],99:["Thunderstorm with Hail","⛈️"]
-    };
-    const info = codes[current.weather_code] || ["Current Conditions","🌤️"];
-    setText("weatherDesc", info[0]);
-    setText("weatherIcon", info[1]);
-  } catch (error) {
-    console.error(error);
+  const setLoadingFailed = () => {
     setText("weatherTemp", "--");
     setText("weatherDesc", "Weather unavailable");
     setText("humidity", "--");
     setText("wind", "--");
     setText("barometer", "--");
     setText("feelsLike", "--");
+    setText("weatherIcon", "⚠️");
+  };
+
+  // Open-Meteo does not require an API key. Pressure is requested in default hPa
+  // and converted to inHg here so the BARO display is always ##.## inHg.
+  const urls = [
+    "https://api.open-meteo.com/v1/forecast?latitude=41.4048&longitude=-81.7229&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,pressure_msl,surface_pressure&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FNew_York",
+    "https://api.open-meteo.com/v1/forecast?latitude=41.4048&longitude=-81.7229&current_weather=true&hourly=temperature_2m,apparent_temperature,relative_humidity_2m,pressure_msl,surface_pressure&temperature_unit=fahrenheit&wind_speed_unit=mph&forecast_days=1&timezone=America%2FNew_York"
+  ];
+
+  const codes = {
+    0:["Clear Sky","☀️"],1:["Mainly Clear","🌤️"],2:["Partly Cloudy","⛅"],3:["Overcast","☁️"],45:["Foggy","🌫️"],48:["Rime Fog","🌫️"],
+    51:["Light Drizzle","🌧️"],53:["Drizzle","🌧️"],55:["Heavy Drizzle","🌧️"],61:["Light Rain","🌦️"],63:["Rain","🌧️"],65:["Heavy Rain","⛈️"],
+    71:["Light Snow","🌨️"],73:["Snow","❄️"],75:["Heavy Snow","❄️"],77:["Snow Grains","🌨️"],80:["Rain Showers","🌦️"],81:["Rain Showers","🌧️"],82:["Heavy Showers","⛈️"],
+    85:["Snow Showers","🌨️"],86:["Heavy Snow Showers","❄️"],95:["Thunderstorm","⛈️"],96:["Thunderstorm with Hail","⛈️"],99:["Thunderstorm with Hail","⛈️"]
+  };
+
+  try {
+    let data = null;
+    for (const url of urls) {
+      try {
+        const response = await fetch(url, { cache: "no-store" });
+        if (!response.ok) continue;
+        data = await response.json();
+        break;
+      } catch (e) {
+        console.warn("Weather fetch failed, trying fallback", e);
+      }
+    }
+    if (!data) throw new Error("No weather data returned");
+
+    let current = data.current || {};
+
+    // Fallback for older Open-Meteo current_weather format.
+    if (!current.temperature_2m && data.current_weather) {
+      const cw = data.current_weather;
+      current.temperature_2m = cw.temperature;
+      current.wind_speed_10m = cw.windspeed;
+      current.weather_code = cw.weathercode;
+
+      const hourly = data.hourly || {};
+      const times = hourly.time || [];
+      const currentHour = (cw.time || "").slice(0, 13);
+      let idx = times.findIndex(t => t.slice(0, 13) === currentHour);
+      if (idx < 0) idx = 0;
+      current.apparent_temperature = hourly.apparent_temperature?.[idx];
+      current.relative_humidity_2m = hourly.relative_humidity_2m?.[idx];
+      current.pressure_msl = hourly.pressure_msl?.[idx];
+      current.surface_pressure = hourly.surface_pressure?.[idx];
+    }
+
+    const temp = Number(current.temperature_2m);
+    const feels = Number(current.apparent_temperature);
+    const hum = Number(current.relative_humidity_2m);
+    const wind = Number(current.wind_speed_10m);
+    let baro = Number(current.pressure_msl ?? current.surface_pressure);
+    if (Number.isFinite(baro) && baro > 100) baro = baro / 33.8638866667;
+
+    setText("weatherTemp", Number.isFinite(temp) ? Math.round(temp) + "°F" : "--");
+    setText("feelsLike", Number.isFinite(feels) ? Math.round(feels) + "°F" : "--");
+    setText("humidity", Number.isFinite(hum) ? Math.round(hum) + "%" : "--");
+    setText("wind", Number.isFinite(wind) ? Math.round(wind) + " mph" : "--");
+    setText("barometer", Number.isFinite(baro) ? baro.toFixed(2) + " inHg" : "--");
+
+    const info = codes[current.weather_code] || ["Current Conditions","🌤️"];
+    setText("weatherDesc", info[0]);
+    setText("weatherIcon", info[1]);
+  } catch (error) {
+    console.error("Weather update failed:", error);
+    setLoadingFailed();
   }
 }
 updateWeather();
