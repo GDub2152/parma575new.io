@@ -410,9 +410,12 @@ img{max-width:100%;display:block}
   align-items:flex-start;
 }
 .hero-bigfoot-logo{
+<<<<<<< HEAD
   width:350px;
   max-width:100%;
   max-height:350px;
+=======
+ >>>>>>> 660b4dbbc64391617a6b03b8f5975eb37022b95a
   object-fit:contain;
   border-radius:18px;
   filter:drop-shadow(0 0 28px rgba(40,169,255,.28));
