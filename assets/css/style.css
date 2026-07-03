@@ -420,7 +420,7 @@ img{max-width:100%;display:block}
   align-items:flex-start;
 }
 .hero-bigfoot-logo{
-  width:min(400px,100%);
+  width:min(390px,100%);
   max-height:560px;
   object-fit:contain;
   border-radius:18px;
