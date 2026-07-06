@@ -466,3 +466,28 @@ img{max-width:100%;display:block}
 @media(max-width:500px){
   .hero-bigfoot-logo{max-height:420px;}
 }
+<section id="current-events" class="event-section">
+  <h2>Current Events</h2>
+  <div id="event-list"></div>
+</section>
+
+<script src="events/events.js"></script>
+<script>
+const eventList=document.getElementById("event-list");
+const activeEvents=EVENTS.filter(e=>e.active);
+if(activeEvents.length===0){
+ document.getElementById("current-events").style.display="none";
+}else{
+ eventList.innerHTML=activeEvents.map(event=>`
+ <div class="event-card">
+   <img src="${event.image}" alt="${event.title}">
+   <div class="event-card-content">
+     <h3>${event.title}</h3>
+     <p><strong>${event.date}</strong> at <strong>${event.time}</strong></p>
+     <p>${event.location}<br>${event.address}</p>
+     <p>${event.description}</p>
+     <a class="btn btn-blue" href="${event.buttonLink}" target="_blank">${event.buttonText}</a>
+   </div>
+ </div>`).join("");
+}
+</script>
