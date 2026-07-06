@@ -1,0 +1,21 @@
+Firebase Picnic Survey Setup
+
+1. Go to https://console.firebase.google.com/ and create a project.
+2. In Project Overview, create a Web App.
+3. Copy the firebaseConfig object.
+4. Open events.html and replace the placeholder firebaseConfig values.
+5. Go to Firestore Database and create a database.
+6. Start in test mode while setting it up, then use safer rules when ready.
+
+Basic test rules:
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /picnic_rsvps/{document} {
+      allow read, create: if true;
+      allow update, delete: if false;
+    }
+  }
+}
+
+After uploading to GitHub Pages, open events.html and test the RSVP form.
