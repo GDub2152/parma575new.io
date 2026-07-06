@@ -1,299 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Repeater | Parma575 GMRS Radio Group</title>
-<meta name="description" content="Parma575 GMRS Radio Group">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Parma 575 GMRS Radio Group">
+  <title>Repeater | Parma 575</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/data/site.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
 </head>
 <body>
-<div id="site-header"></div>
-<section class="page-hero"><h1>Repeater Information</h1><p>Parma575 repeater details and operating information.</p></section>
-<section class="section"><div class="container grid-2">
-<div class="card"><h3>System Details</h3><table class="spec-table">
-<tr><td>Downlink</td><td>462.575 MHz</td></tr><tr><td>Uplink</td><td>467.575 MHz</td></tr><tr><td>PL Tone</td><td>79.7 Hz</td></tr><tr><td>Status</td><td><span class="online">● Online</span></td></tr><tr><td>Coverage</td><td>Cuyahoga County and surrounding counties</td></tr>
-</table></div>
-<div class="card"><h3>Operating Notes</h3><p>Use courteous operating practices, identify with your callsign, leave pauses between transmissions, and keep the repeater family-friendly.</p><p class="notice">Licensed GMRS users are welcome to participate.</p></div>
-</div></section>
-
-<section class="section">
-  <div class="container grid-2">
-    <div class="card">
-      <h3>myGMRS Repeater Listing</h3>
-      <p>View the Parma 575 repeater listing on myGMRS for access details, updates, and additional repeater information.</p>
-      <p><a class="btn btn-blue" href="https://mygmrs.com/repeater/10634" target="_blank" rel="noopener">Open Parma 575 on myGMRS</a></p>
+  <div data-header></div>
+  <main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker">Radio Information</span>
+      <h1>Repeater Information</h1>
+      <p class="lead">Core Parma 575 GMRS repeater details and programming information.</p>
     </div>
-    <div class="card">
-      <h3>RepeaterBook Listing</h3>
-      <p>View the Parma 575 / WRZV602 RepeaterBook listing for the live directory details and coverage information.</p>
-      <p><a class="btn btn-green" href="https://www.repeaterbook.com/gmrs/details.php?state_id=39&ID=1747" target="_blank" rel="noopener">Open Parma 575 on RepeaterBook</a></p>
-    </div>
-  </div>
-</section>
-
-<section class="section repeater-map-section">
-  <div class="container">
-    <div class="card map-card">
-      <div class="map-header">
-        <div>
-          <h3>Parma 575 Interactive Repeater Map</h3>
-          <p>Dark OpenStreetMap view with the Parma 575 repeater, nearby GMRS area markers, highlighted Northeast Ohio counties, live weather, and a locate-me distance tool.</p>
+  </section>
+  <section class="section">
+    <div class="container grid-2">
+      <div class="card">
+        <h2>Parma 575 GMRS Repeater</h2>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Output</th><td>462.575 MHz</td></tr>
+            <tr><th>Input</th><td>467.575 MHz</td></tr>
+            <tr><th>Tone</th><td>141.3 Hz</td></tr>
+            <tr><th>Area</th><td>Parma / Northern Ohio</td></tr>
+          </table>
         </div>
-        <button id="locate-me-btn" class="btn btn-blue" type="button">📍 Locate Me</button>
+        <p class="notice">Confirm current access details with club leadership before programming radios.</p>
       </div>
-
-      <div class="map-layout">
-        <div id="coverage-map" aria-label="Interactive Parma 575 repeater coverage map"></div>
-
-        <div class="map-side-panel">
-          <details class="map-info-card" open>
-            <summary>📡 Parma 575</summary>
-            <table class="spec-table compact-table">
-              <tr><td>Output / Downlink</td><td>462.575 MHz</td></tr>
-              <tr><td>Input / Uplink</td><td>467.575 MHz</td></tr>
-              <tr><td>PL Tone</td><td>79.7 Hz</td></tr>
-              <tr><td>Status</td><td><span class="online">● Online</span></td></tr>
-            </table>
-          </details>
-
-          <details class="map-info-card" open>
-            <summary>🌦️ Live Weather</summary>
-            <div id="repeater-weather" class="weather-box">Loading local weather near the repeater...</div>
-          </details>
-
-          <details class="map-info-card" open>
-            <summary>📶 Coverage Legend</summary>
-            <div class="legend-row"><span class="legend-dot parma-dot"></span> Parma 575 repeater</div>
-            <div class="legend-row"><span class="legend-dot nearby-dot"></span> Nearby GMRS repeater area marker</div>
-            <div class="legend-row"><span class="legend-line county-line"></span> Highlighted county outline</div>
-            <div class="legend-row"><span class="legend-fill service-fill"></span> Primary service area indicator</div>
-            <p><small>This map is an informational service-area view only. It is not an RF propagation contour.</small></p>
-          </details>
-
-          <details class="map-info-card">
-            <summary>📍 Locate Me Result</summary>
-            <div id="locate-result">Click <strong>Locate Me</strong> and allow browser location access to show your distance from Parma 575.</div>
-          </details>
-        </div>
+      <div class="card">
+        <h2>Operating Reminders</h2>
+        <p>Use your GMRS call sign as required, leave pauses between transmissions, and keep the repeater friendly for everyone.</p>
+        <p>For official GMRS rules, always refer to current FCC guidance.</p>
       </div>
-
-      <p class="map-note"><small>Coverage and nearby marker locations are approximate and can vary with radio power, antenna height, terrain, buildings, and local conditions. Use the directory buttons above for current listing details.</small></p>
     </div>
-  </div>
-</section>
-
-<style>
-  .repeater-map-section .map-card { overflow: hidden; }
-  .map-header { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; margin-bottom:18px; }
-  .map-header h3 { margin-top:0; }
-  .map-layout { display:grid; grid-template-columns:minmax(0, 1fr) 330px; gap:16px; align-items:stretch; }
-  #coverage-map { width:100%; min-height:650px; height:68vh; border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.14); background:#0b1220; z-index:1; }
-  .map-side-panel { display:flex; flex-direction:column; gap:12px; max-height:650px; overflow:auto; padding-right:3px; }
-  .map-info-card { border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:12px 14px; background:rgba(10,18,32,.48); }
-  .map-info-card summary { cursor:pointer; font-weight:800; color:#e9f4ff; list-style:none; }
-  .map-info-card summary::-webkit-details-marker { display:none; }
-  .compact-table td { padding:8px 6px; }
-  .weather-box { margin-top:10px; line-height:1.65; color:#d8e9f7; }
-  .weather-main { font-size:1.4rem; font-weight:900; color:#fff; }
-  .legend-row { display:flex; align-items:center; gap:9px; margin:10px 0; color:#d8e9f7; }
-  .legend-dot { width:14px; height:14px; border-radius:50%; display:inline-block; border:2px solid #fff; }
-  .parma-dot { background:#22c55e; }
-  .nearby-dot { background:#f59e0b; }
-  .legend-line { width:26px; height:0; border-top:3px solid #38bdf8; display:inline-block; }
-  .legend-fill { width:24px; height:14px; border-radius:4px; background:rgba(56,189,248,.24); border:1px solid #38bdf8; display:inline-block; }
-  .map-note { margin-bottom:0; }
-  .leaflet-popup-content { color:#0f172a; }
-  .leaflet-control-custom { background:#fff; border:0; border-radius:4px; box-shadow:0 1px 5px rgba(0,0,0,.45); padding:7px 10px; cursor:pointer; font-weight:700; }
-  @media (max-width: 900px) {
-    .map-header { flex-direction:column; }
-    .map-header .btn { width:100%; text-align:center; }
-    .map-layout { grid-template-columns:1fr; }
-    #coverage-map { min-height:620px; height:72vh; }
-    .map-side-panel { max-height:none; overflow:visible; }
-    .map-info-card { padding:14px; }
-  }
-  @media (max-width: 520px) {
-    #coverage-map { min-height:560px; height:75vh; border-radius:12px; }
-  }
-</style>
-<div id="site-footer"></div>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var repeaterLocation = [41.3632, -81.7162]; // Parma / Bigfoot WJW Fox 8 tower area from RepeaterBook listing area
-    var repeaterBookUrl = 'https://www.repeaterbook.com/gmrs/details.php?state_id=39&ID=1747';
-    var myGmrsUrl = 'https://mygmrs.com/repeater/10634';
-
-    var map = L.map('coverage-map', {
-      scrollWheelZoom: false,
-      zoomControl: true
-    }).setView(repeaterLocation, 9);
-
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>'
-    }).addTo(map);
-
-    var parmaIcon = L.divIcon({
-      className: 'parma-repeater-marker',
-      html: '<div style="background:#22c55e;color:#052e16;border:3px solid #fff;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.45);">📡</div>',
-      iconSize: [34, 34],
-      iconAnchor: [17, 17],
-      popupAnchor: [0, -18]
-    });
-
-    var nearbyIcon = L.divIcon({
-      className: 'nearby-repeater-marker',
-      html: '<div style="background:#f59e0b;color:#2b1700;border:2px solid #fff;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:14px;box-shadow:0 2px 8px rgba(0,0,0,.4);">●</div>',
-      iconSize: [26, 26],
-      iconAnchor: [13, 13],
-      popupAnchor: [0, -14]
-    });
-
-    L.marker(repeaterLocation, { icon: parmaIcon }).addTo(map)
-      .bindPopup('<strong>Parma 575 GMRS Repeater</strong><br>Output: 462.575 MHz<br>Input: 467.575 MHz<br>PL Tone: 79.7 Hz<br>Status: On-Air<br><br><a href="' + repeaterBookUrl + '" target="_blank" rel="noopener">RepeaterBook</a> &nbsp;|&nbsp; <a href="' + myGmrsUrl + '" target="_blank" rel="noopener">myGMRS</a>');
-
-    // Informational service-area circle only. This is not an RF contour.
-    L.circle(repeaterLocation, {
-      radius: 96560, // about 60 miles, matching directory wide-area note without implying a terrain-based contour
-      color: '#38bdf8',
-      weight: 2,
-      fillColor: '#38bdf8',
-      fillOpacity: 0.12,
-      dashArray: '8, 8'
-    }).addTo(map).bindPopup('Primary service area indicator only — not an RF propagation contour.');
-
-    var nearbyRepeaters = [
-      { name: 'Cleveland GMRS area marker', coords: [41.4993, -81.6944], note: 'Nearby GMRS repeater area marker. Verify current details in GMRS directories.' },
-      { name: 'Elyria / Lorain GMRS area marker', coords: [41.3684, -82.1077], note: 'Nearby GMRS repeater area marker. Verify current details in GMRS directories.' },
-      { name: 'Akron / Summit GMRS area marker', coords: [41.0814, -81.5190], note: 'Nearby GMRS repeater area marker. Verify current details in GMRS directories.' },
-      { name: 'Medina GMRS area marker', coords: [41.1384, -81.8637], note: 'Nearby GMRS repeater area marker. Verify current details in GMRS directories.' },
-      { name: 'Mentor / Lake County GMRS area marker', coords: [41.6662, -81.3396], note: 'Nearby GMRS repeater area marker. Verify current details in GMRS directories.' },
-      { name: 'Chardon / Geauga GMRS area marker', coords: [41.5790, -81.2084], note: 'Nearby GMRS repeater area marker. Verify current details in GMRS directories.' },
-      { name: 'Ravenna / Portage GMRS area marker', coords: [41.1576, -81.2420], note: 'Nearby GMRS repeater area marker. Verify current details in GMRS directories.' }
-    ];
-
-    nearbyRepeaters.forEach(function (r) {
-      L.marker(r.coords, { icon: nearbyIcon }).addTo(map)
-        .bindPopup('<strong>' + r.name + '</strong><br>' + r.note + '<br><br><a href="https://www.repeaterbook.com/gmrs/index.php?state_id=39" target="_blank" rel="noopener">Search Ohio GMRS repeaters</a>');
-    });
-
-    var countyFips = {
-      '39035': 'Cuyahoga County',
-      '39103': 'Medina County',
-      '39093': 'Lorain County',
-      '39153': 'Summit County',
-      '39085': 'Lake County',
-      '39055': 'Geauga County',
-      '39133': 'Portage County'
-    };
-
-    fetch('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json')
-      .then(function (response) { return response.json(); })
-      .then(function (geojson) {
-        var selected = {
-          type: 'FeatureCollection',
-          features: geojson.features.filter(function (feature) { return countyFips[feature.id]; })
-        };
-        L.geoJSON(selected, {
-          style: function () {
-            return { color: '#38bdf8', weight: 2, fillColor: '#38bdf8', fillOpacity: 0.08 };
-          },
-          onEachFeature: function (feature, layer) {
-            layer.bindPopup('<strong>' + countyFips[feature.id] + '</strong><br>Highlighted primary service-area county.');
-          }
-        }).addTo(map);
-      })
-      .catch(function () {
-        console.warn('County outline GeoJSON could not be loaded.');
-      });
-
-    function degreesToCompass(degrees) {
-      var directions = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
-      return directions[Math.round(degrees / 22.5) % 16];
-    }
-
-    function weatherIcon(code) {
-      if ([0].includes(code)) return '☀️';
-      if ([1, 2].includes(code)) return '🌤️';
-      if ([3].includes(code)) return '☁️';
-      if ([45, 48].includes(code)) return '🌫️';
-      if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(code)) return '🌧️';
-      if ([71, 73, 75, 77, 85, 86].includes(code)) return '❄️';
-      if ([95, 96, 99].includes(code)) return '⛈️';
-      return '🌡️';
-    }
-
-    function weatherText(code) {
-      var descriptions = {
-        0: 'Clear sky', 1: 'Mainly clear', 2: 'Partly cloudy', 3: 'Overcast',
-        45: 'Fog', 48: 'Depositing rime fog', 51: 'Light drizzle', 53: 'Drizzle', 55: 'Dense drizzle',
-        56: 'Freezing drizzle', 57: 'Dense freezing drizzle', 61: 'Slight rain', 63: 'Rain', 65: 'Heavy rain',
-        66: 'Freezing rain', 67: 'Heavy freezing rain', 71: 'Slight snow', 73: 'Snow', 75: 'Heavy snow',
-        77: 'Snow grains', 80: 'Rain showers', 81: 'Rain showers', 82: 'Violent rain showers',
-        85: 'Snow showers', 86: 'Heavy snow showers', 95: 'Thunderstorm', 96: 'Thunderstorm with hail', 99: 'Thunderstorm with heavy hail'
-      };
-      return descriptions[code] || 'Current conditions';
-    }
-
-    fetch('https://api.open-meteo.com/v1/forecast?latitude=' + repeaterLocation[0] + '&longitude=' + repeaterLocation[1] + '&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,wind_direction_10m,surface_pressure&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FNew_York')
-      .then(function (response) { return response.json(); })
-      .then(function (data) {
-        var current = data.current || {};
-        var inHg = current.surface_pressure ? (current.surface_pressure * 0.0295299830714).toFixed(2) : 'N/A';
-        var windDirection = typeof current.wind_direction_10m === 'number' ? degreesToCompass(current.wind_direction_10m) : 'N/A';
-        document.getElementById('repeater-weather').innerHTML =
-          '<div class="weather-main">' + weatherIcon(current.weather_code) + ' ' + Math.round(current.temperature_2m) + '°F</div>' +
-          '<div>' + weatherText(current.weather_code) + '</div>' +
-          '<div>Wind: ' + Math.round(current.wind_speed_10m || 0) + ' mph ' + windDirection + '</div>' +
-          '<div>Humidity: ' + (current.relative_humidity_2m ?? 'N/A') + '%</div>' +
-          '<div>Barometer: ' + inHg + ' inHg</div>';
-      })
-      .catch(function () {
-        document.getElementById('repeater-weather').textContent = 'Live weather could not be loaded right now.';
-      });
-
-    function milesBetween(a, b) {
-      var R = 3958.8;
-      var lat1 = a[0] * Math.PI / 180;
-      var lat2 = b[0] * Math.PI / 180;
-      var dLat = (b[0] - a[0]) * Math.PI / 180;
-      var dLon = (b[1] - a[1]) * Math.PI / 180;
-      var h = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-      return R * 2 * Math.atan2(Math.sqrt(h), Math.sqrt(1 - h));
-    }
-
-    var userMarker;
-    var userLine;
-    document.getElementById('locate-me-btn').addEventListener('click', function () {
-      var resultBox = document.getElementById('locate-result');
-      if (!navigator.geolocation) {
-        resultBox.textContent = 'Your browser does not support location services.';
-        return;
-      }
-      resultBox.textContent = 'Requesting your location...';
-      navigator.geolocation.getCurrentPosition(function (position) {
-        var userLocation = [position.coords.latitude, position.coords.longitude];
-        var distance = milesBetween(userLocation, repeaterLocation).toFixed(1);
-        if (userMarker) map.removeLayer(userMarker);
-        if (userLine) map.removeLayer(userLine);
-        userMarker = L.marker(userLocation).addTo(map).bindPopup('<strong>Your location</strong><br>About ' + distance + ' miles from Parma 575.').openPopup();
-        userLine = L.polyline([userLocation, repeaterLocation], { color: '#60a5fa', weight: 3, dashArray: '6, 8' }).addTo(map);
-        map.fitBounds(L.latLngBounds([userLocation, repeaterLocation]).pad(0.35));
-        resultBox.innerHTML = '<strong>Distance:</strong> about ' + distance + ' miles from Parma 575 by straight-line distance.';
-      }, function () {
-        resultBox.textContent = 'Location permission was denied or your position could not be found.';
-      }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 });
-    });
-  });
-</script>
-<script src="assets/js/components.js"></script>
-<script src="assets/js/main.js"></script>
-
+  </section>
+</main>
+  <div data-footer></div>
 </body>
 </html>

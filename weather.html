@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Parma 575 GMRS Radio Group">
-  <title>Events | Parma 575</title>
+  <title>Weather | Parma 575</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="assets/data/site.js" defer></script>
   <script src="assets/js/app.js" defer></script>
@@ -14,16 +14,15 @@
   <main>
   <section class="page-hero">
     <div class="container">
-      <span class="kicker">Club Events</span>
-      <h1>Events</h1>
-      <p class="lead">Current Parma 575 events, RSVP links, directions, and event flyers.</p>
+      <span class="kicker">Open-Meteo</span>
+      <h1>Parma Weather</h1>
+      <p class="lead">Current weather conditions for the Parma, Ohio area.</p>
     </div>
   </section>
-  <div data-current-event></div>
   <section class="section">
-    <div class="container card">
-      <h2>After the event</h2>
-      <p>To remove the picnic from the website, open <code>assets/data/site.js</code> and change <strong>active: true</strong> to <strong>active: false</strong>.</p>
+    <div class="container card weather-card">
+      <h2>Current Conditions</h2>
+      <div data-weather>Loading weather...</div>
     </div>
   </section>
 </main>
