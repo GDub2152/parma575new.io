@@ -46,6 +46,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <p class="footer-links">
             <a href="index.html">Home</a> · <a href="repeater.html">Repeater</a> · <a href="solar.html">Solar</a> · <a href="events.html">Events</a> · <a href="contact.html">Contact</a>
           </p>
+          <div class="visitor-counter" aria-label="Website visitor counter">
+            <span>Visitor Counter</span>
+            <img src="https://visitor-badge.laobi.icu/badge?page_id=parma575-gmrs-radio-group&left_text=Visitors" alt="Visitor counter">
+          </div>
         </div>
       </footer>`;
   }
