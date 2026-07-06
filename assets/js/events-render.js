@@ -19,8 +19,10 @@ function renderParma575Events(targetId, mode) {
             <h3>${event.title}</h3>
             <p>${event.date} • ${event.time}<br>${event.location}</p>
           </div>
-          <a class="btn btn-blue" href="events.html">Details</a>
-          <a class="btn btn-green" href="${event.buttonLink}" target="_blank" rel="noopener">RSVP</a>
+          <div class="event-row-actions">
+            <a class="btn btn-blue" href="events.html">Details</a>
+            <a class="btn btn-green" href="${event.buttonLink}" target="_blank" rel="noopener">RSVP</a>
+          </div>
         </div>
       `;
     }
