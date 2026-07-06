@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home | Parma 575 GMRS Radio Group</title>
+<meta name="description" content="Parma 575 GMRS Radio Group serving Northern Ohio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-logo-panel">
+      <img class="hero-bigfoot-logo" src="assets/images/Bigfoot_Neon_Logo_01.jpg" alt="Parma 575 Bigfoot GMRS Repeater neon logo">
+      <p>Connecting friends, families, and emergency communicators through General Mobile Radio Service across Cuyahoga County, Ohio and surrounding counties.</p>
+      <div class="hero-buttons">
+        <a class="btn btn-green" href="https://www.gofundme.com/f/Parma-575-GMRS-repeater-covering-Northern-Ohio" target="_blank" rel="noopener">❤️ Support Us On GoFundMe</a>
+        <a class="btn btn-blue" href="https://discord.gg/JGJtjd6fC" target="_blank" rel="noopener">💬 Join Our Discord</a>
+      </div>
+    </div>
+
+    <div class="status-stack dashboard-stack">
+      <div class="widget repeater-status-widget dashboard-card repeater-card-top">
+        <h3>Repeater Status <span class="online">● Online</span></h3>
+        <div class="repeater-status-grid">
+          <div><span>Downlink</span><b>462.575</b><small>MHz</small></div>
+          <div><span>Uplink</span><b>467.575</b><small>MHz</small></div>
+          <div><span>Offset</span><b>+5.0</b><small>MHz</small></div>
+          <div><span>PL Tone</span><b>79.7</b><small>Hz</small></div>
+        </div>
+      </div>
+
+      <div class="widget weather-dashboard-card dashboard-card weather-card-top">
+        <div class="weather-header-row">
+          <h3>Parma Weather</h3>
+          <span id="weatherStatus" class="weather-status-pill">Updating</span>
+        </div>
+        <div class="weather-main-row">
+          <div id="weatherIcon" class="weather-icon">🌤️</div>
+          <div>
+            <div id="weatherTemp" class="temp">--°F</div>
+            <div id="weatherDesc" class="weather-desc">Loading current conditions...</div>
+          </div>
+        </div>
+        <div class="mini-grid weather-metrics">
+          <div><small>Humidity</small><b id="humidity">--</b></div>
+          <div><small>Wind</small><b id="wind">--</b></div>
+          <div><small>Pressure</small><b id="barometer">--</b></div>
+          <div><small>Feels Like</small><b id="feelsLike">--</b></div>
+        </div>
+        <div id="weatherForecast" class="weather-forecast-row">
+          <div><small>Today</small><b>--</b></div>
+          <div><small>Tomorrow</small><b>--</b></div>
+          <div><small>Next Day</small><b>--</b></div>
+        </div>
+        <div class="weather-source-line"><span id="weatherUpdated">Loading...</span> · <a href="https://open-meteo.com/" target="_blank" rel="noopener">Source: Open-Meteo</a></div>
+      </div>
+
+      <div class="widget dashboard-card time-card-top">
+        <h3>Current Time</h3>
+        <div class="time-grid dashboard-time-grid">
+          <div class="time-box"><h4>Local Time</h4><div id="localTime" class="clock">--:--:--</div></div>
+          <div class="time-box"><h4>UTC / Zulu</h4><div id="utcTime" class="clock">--:--:-- UTC</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="container feature-grid">
+  <a class="feature" href="about.html"><div class="feature-icon">🏢</div><div><h3>About PARMA 575</h3><p>Mission, members, and community involvement.</p>Learn More →</div></a>
+  <a class="feature" href="repeater.html"><div class="feature-icon">📻</div><div><h3>Repeater Info</h3><p>Technical details and coverage information.</p>View Repeater →</div></a>
+  <a class="feature" href="solar.html"><div class="feature-icon">☀️</div><div><h3>Solar / Band Conditions</h3><p>Solar activity and radio propagation data.</p>View Solar Page →</div></a>
+  <a class="feature" href="events.html"><div class="feature-icon">📅</div><div><h3>Upcoming Events</h3><p>Nets, club events, and activities.</p>View Events →</div></a>
+  <a class="feature" href="gallery.html"><div class="feature-icon">📷</div><div><h3>Photo Gallery</h3><p>Club events, radios, and community service.</p>View Gallery →</div></a>
+  <a class="feature" href="downloads.html"><div class="feature-icon">📄</div><div><h3>Downloads</h3><p>Programming guides, club documents, and maps.</p>View Downloads →</div></a>
+</section>
+
+<section class="section">
+  <div class="container home-bottom-grid">
+    <div class="card home-bottom-card"><h3>Latest News</h3>
+      <div class="news-item"><div class="badge-icon">📢</div><div><b>Repeater Maintenance Completed</b><br><small>Repeater is operating at 100%.</small></div></div>
+      <div class="news-item"><div class="badge-icon">📢</div><div><b>Summer Picnic Announced</b><br><small>Join us July 26th for our annual club picnic.</small></div></div>
+    </div>
+
+    <div class="card home-bottom-card"><h3>Upcoming Events</h3>
+      <div id="home-event-list"></div>
+    </div>
+
+    
+  </div>
+</section>
+<div id="site-footer"></div>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/events-data.js"></script>
+<script src="assets/js/events-render.js"></script>
+<script>renderParma575Events("home-event-list", "compact");</script>
+<script src="assets/js/main.js"></script>
+
+
+
+<!-- Working QR RSVP Box - Parma 575 Picnic -->
+<div class="rsvp-qr-box">
+  <h3>Scan to RSVP</h3>
+  <img class="rsvp-qr-img" src="assets/images/parma575-picnic-rsvp-qr.png" alt="QR code for Parma 575 picnic RSVP form">
+  <div class="rsvp-actions">
+    <a class="btn btn-blue" href="https://docs.google.com/forms/d/e/1FAIpQLSeWM8JRkixKm_jnnZDMxGTT9STpJOgLL3j694VfMgpTywkA5A/viewform" target="_blank" rel="noopener">Open RSVP Form</a>
+  </div>
+  <p class="rsvp-direct-link">
+    If the QR code will not scan, tap the RSVP button above.
+  </p>
+</div>
+
+</body>
+</html>
