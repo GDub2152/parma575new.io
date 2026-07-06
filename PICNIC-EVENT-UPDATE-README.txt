@@ -23,3 +23,12 @@ Note: this looks like a Google Apps Script editor link, not the public Google Fo
 After you create/run the form script, replace buttonLink in assets/js/events-data.js with the Public Form URL from Apps Script logs.
 
 GitHub Pages workflow was replaced with a single upload-pages-artifact workflow to fix the duplicate github-pages artifact error.
+
+QR UPDATE:
+The event page now uses a real separate QR code image:
+assets/images/parma575-picnic-rsvp-qr.png
+
+The flyer image used by the page is now:
+assets/images/picnic-rsvp-banner-noqr.png
+
+This prevents the QR code from being cropped or blurred and makes it work better on mobile devices.

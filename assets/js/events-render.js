@@ -28,16 +28,28 @@ function renderParma575Events(targetId, mode) {
     }
 
     return `
-      <article class="card event-detail-card">
-        <img class="event-detail-image" src="${event.image}" alt="${event.title}">
-        <h3>${event.title}</h3>
-        <p><strong>${event.date}</strong><br>${event.time}</p>
-        <p><strong>${event.location}</strong><br>${event.address}</p>
-        <p>${event.description}</p>
-        <p>${event.details}</p>
-        <div class="event-actions">
-          <a class="btn btn-green" href="${event.buttonLink}" target="_blank" rel="noopener">${event.buttonText}</a>
-          <a class="btn btn-blue" href="${event.mapLink}" target="_blank" rel="noopener">📍 Open in Google Maps</a>
+      <article class="card event-detail-card event-detail-modern">
+        <div class="event-hero-grid">
+          <div class="event-flyer-panel">
+            <img class="event-detail-image" src="${event.image}" alt="${event.title}">
+          </div>
+          <aside class="event-rsvp-panel" aria-label="RSVP information">
+            <h3>Scan to RSVP</h3>
+            <img class="event-qr-image" src="${event.qrImage}" alt="QR code for Parma 575 picnic RSVP form">
+            <a class="btn btn-green event-rsvp-button" href="${event.buttonLink}" target="_blank" rel="noopener">${event.buttonText}</a>
+            <p class="event-rsvp-note">Open your phone camera and scan the QR code, or use the RSVP button.</p>
+          </aside>
+        </div>
+        <div class="event-info-block">
+          <h3>${event.title}</h3>
+          <p><strong>${event.date}</strong><br>${event.time}</p>
+          <p><strong>${event.location}</strong><br>${event.address}</p>
+          <p>${event.description}</p>
+          <p>${event.details}</p>
+          <div class="event-actions">
+            <a class="btn btn-green" href="${event.buttonLink}" target="_blank" rel="noopener">${event.buttonText}</a>
+            <a class="btn btn-blue" href="${event.mapLink}" target="_blank" rel="noopener">📍 Open in Google Maps</a>
+          </div>
         </div>
       </article>
     `;
