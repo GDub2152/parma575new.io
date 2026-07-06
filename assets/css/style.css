@@ -647,3 +647,80 @@ img{max-width:100%;display:block}
     width: min(100%, 235px);
   }
 }
+
+
+
+/* Parma 575 RSVP QR/Event Card Fix */
+.picnic-rsvp-card,
+.event-card,
+.current-event-card {
+  overflow: visible !important;
+}
+
+.rsvp-qr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: #ffffff;
+  color: #111111;
+  border-radius: 18px;
+  padding: 1.25rem;
+  border: 3px solid #70c52f;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.18);
+  max-width: 360px;
+  width: 100%;
+  margin: 1rem auto;
+  overflow: visible !important;
+}
+
+.rsvp-qr-box img,
+.rsvp-qr-img {
+  display: block;
+  width: min(280px, 88vw);
+  max-width: 100%;
+  height: auto;
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 10px;
+  object-fit: contain !important;
+  image-rendering: pixelated;
+}
+
+.rsvp-direct-link {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+.rsvp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+@media (max-width: 760px) {
+  .event-card,
+  .current-event-card,
+  .picnic-rsvp-card {
+    display: block !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  .rsvp-qr-box {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .rsvp-actions a,
+  .rsvp-actions .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+}
