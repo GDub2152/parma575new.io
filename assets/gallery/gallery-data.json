@@ -2,6 +2,18 @@
   "generated": true,
   "albums": [
     {
+      "id": "parma575-photos",
+      "title": "Parma575 Photos",
+      "cover": "assets/gallery/Parma575%20Photos/Rick%20Radio.jpg",
+      "photos": [
+        {
+          "name": "Rick Radio",
+          "alt": "Parma575 Photos - Rick Radio",
+          "src": "assets/gallery/Parma575%20Photos/Rick%20Radio.jpg"
+        }
+      ]
+    },
+    {
       "id": "summer-picnic-2026",
       "title": "Summer Picnic 2026",
       "cover": "assets/gallery/Summer%20Picnic%202026/Group.jpg",
@@ -15,6 +27,11 @@
           "name": "Prize winners",
           "alt": "Summer Picnic 2026 - Prize winners",
           "src": "assets/gallery/Summer%20Picnic%202026/Prize%20winners.png"
+        },
+        {
+          "name": "Rick Radio",
+          "alt": "Summer Picnic 2026 - Rick Radio",
+          "src": "assets/gallery/Summer%20Picnic%202026/Rick%20Radio.jpg"
         },
         {
           "name": "The Grill",
