@@ -15,12 +15,16 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+
     steps:
       - name: Check out website
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Install rclone
-        run: curl https://rclone.org/install.sh | sudo bash
+        run: |
+          curl https://rclone.org/install.sh | sudo bash
 
       - name: Load OneDrive connection
         env:
@@ -30,41 +34,54 @@ jobs:
             echo "Missing RCLONE_CONFIG repository secret."
             exit 1
           fi
-          mkdir -p ~/.config/rclone
-          printf '%s' "$RCLONE_CONFIG_CONTENT" > ~/.config/rclone/rclone.conf
-          chmod 600 ~/.config/rclone/rclone.conf
+
+          mkdir -p "$HOME/.config/rclone"
+          printf '%s' "$RCLONE_CONFIG_CONTENT" > "$HOME/.config/rclone/rclone.conf"
+          chmod 600 "$HOME/.config/rclone/rclone.conf"
 
       - name: Verify OneDrive connection
-        run: rclone lsf "onedrive:Parma575 Website Photos/Summer Picnic 2026"
+        run: |
+          rclone lsf "onedrive:Parma575 Website Photos"
 
       - name: Synchronize OneDrive albums
         run: |
           mkdir -p assets/gallery
-          rclone sync "onedrive:Parma575 Website Photos" assets/gallery \
-            --exclude "gallery-data.json" \
-            --exclude "README.txt" \
+
+          rclone sync \
+            "onedrive:Parma575 Website Photos" \
+            "assets/gallery" \
             --include "*/" \
-            --include "*.jpg" --include "*.jpeg" --include "*.png" \
-            --include "*.webp" --include "*.gif" --include "*.avif" \
+            --include "*.jpg" \
+            --include "*.JPG" \
+            --include "*.jpeg" \
+            --include "*.JPEG" \
+            --include "*.png" \
+            --include "*.PNG" \
+            --include "*.webp" \
+            --include "*.WEBP" \
+            --include "*.gif" \
+            --include "*.GIF" \
+            --include "*.avif" \
+            --include "*.AVIF" \
             --exclude "*" \
             --fast-list
 
       - name: Build gallery index
-        run: python3 scripts/build-gallery.py
-
-            - name: Build gallery index
-        run: python3 scripts/build-gallery.py
+        run: |
+          python3 scripts/build-gallery.py
 
       - name: Publish gallery changes
         run: |
           git config user.name "Parma575 Gallery Bot"
           git config user.email "actions@users.noreply.github.com"
+
           git add assets/gallery
 
           if git diff --cached --quiet; then
             echo "No gallery changes."
-          else
-            git commit -m "Update OneDrive photo gallery"
-            git pull --rebase origin main
-            git push origin HEAD:main
+            exit 0
           fi
+
+          git commit -m "Update OneDrive photo gallery"
+          git pull --rebase origin main
+          git push origin HEAD:main
