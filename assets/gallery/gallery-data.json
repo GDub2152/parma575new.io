@@ -14,6 +14,18 @@
       ]
     },
     {
+      "id": "repeater-projects",
+      "title": "Repeater Projects",
+      "cover": "assets/gallery/Repeater%20Projects/Rick%20Radio.jpg",
+      "photos": [
+        {
+          "name": "Rick Radio",
+          "alt": "Repeater Projects - Rick Radio",
+          "src": "assets/gallery/Repeater%20Projects/Rick%20Radio.jpg"
+        }
+      ]
+    },
+    {
       "id": "summer-picnic-2026",
       "title": "Summer Picnic 2026",
       "cover": "assets/gallery/Summer%20Picnic%202026/Group.jpg",
