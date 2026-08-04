@@ -1,0 +1,32 @@
+{
+  "generated": true,
+  "albums": [
+    {
+      "id": "parma-575-photos",
+      "title": "Parma 575 Photos",
+      "cover": "assets/gallery/Repeater%20Projects/575Tower.png",
+      "photos": [
+        {
+          "name": "575Tower",
+          "alt": "Repeater Projects - 575Tower",
+          "src": "assets/gallery/Repeater%20Projects/575Tower.png"
+        },
+        {
+          "name": "Group",
+          "alt": "Summer Picnic 2026 - Group",
+          "src": "assets/gallery/Summer%20Picnic%202026/Group.jpg"
+        },
+        {
+          "name": "Prize winners",
+          "alt": "Summer Picnic 2026 - Prize winners",
+          "src": "assets/gallery/Summer%20Picnic%202026/Prize%20winners.png"
+        },
+        {
+          "name": "The Grill",
+          "alt": "Summer Picnic 2026 - The Grill",
+          "src": "assets/gallery/Summer%20Picnic%202026/The%20Grill.jpg"
+        }
+      ]
+    }
+  ]
+}
