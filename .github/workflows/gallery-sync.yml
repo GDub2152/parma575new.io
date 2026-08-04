@@ -69,7 +69,7 @@ jobs:
           git config user.name "Parma575 Gallery Bot"
           git config user.email "actions@users.noreply.github.com"
 
-          git add assets/gallery
+          git add -A assets/gallery
 
           if git diff --cached --quiet; then
             echo "No gallery changes."
