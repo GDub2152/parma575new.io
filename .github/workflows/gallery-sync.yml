@@ -56,7 +56,7 @@ jobs:
         run: |
           git config user.name "Parma575 Gallery Bot"
           git config user.email "actions@users.noreply.github.com"
-          git add assets/gallery
+          git add assets/gallery gallery.json
           if git diff --cached --quiet; then
             echo "No gallery changes."
           else
