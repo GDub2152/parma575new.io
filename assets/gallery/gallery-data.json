@@ -4,8 +4,13 @@
     {
       "id": "parma575-photos",
       "title": "Parma575 Photos",
-      "cover": "assets/gallery/Parma575%20Photos/Rick%20Radio.jpg",
+      "cover": "assets/gallery/Parma575%20Photos/575Tower.png",
       "photos": [
+        {
+          "name": "575Tower",
+          "alt": "Parma575 Photos - 575Tower",
+          "src": "assets/gallery/Parma575%20Photos/575Tower.png"
+        },
         {
           "name": "Rick Radio",
           "alt": "Parma575 Photos - Rick Radio",
@@ -16,12 +21,12 @@
     {
       "id": "repeater-projects",
       "title": "Repeater Projects",
-      "cover": "assets/gallery/Repeater%20Projects/Rick%20Radio.jpg",
+      "cover": "assets/gallery/Repeater%20Projects/575Tower.png",
       "photos": [
         {
-          "name": "Rick Radio",
-          "alt": "Repeater Projects - Rick Radio",
-          "src": "assets/gallery/Repeater%20Projects/Rick%20Radio.jpg"
+          "name": "575Tower",
+          "alt": "Repeater Projects - 575Tower",
+          "src": "assets/gallery/Repeater%20Projects/575Tower.png"
         }
       ]
     },
@@ -39,11 +44,6 @@
           "name": "Prize winners",
           "alt": "Summer Picnic 2026 - Prize winners",
           "src": "assets/gallery/Summer%20Picnic%202026/Prize%20winners.png"
-        },
-        {
-          "name": "Rick Radio",
-          "alt": "Summer Picnic 2026 - Rick Radio",
-          "src": "assets/gallery/Summer%20Picnic%202026/Rick%20Radio.jpg"
         },
         {
           "name": "The Grill",
