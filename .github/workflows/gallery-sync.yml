@@ -52,14 +52,19 @@ jobs:
       - name: Build gallery index
         run: python3 scripts/build-gallery.py
 
+            - name: Build gallery index
+        run: python3 scripts/build-gallery.py
+
       - name: Publish gallery changes
         run: |
           git config user.name "Parma575 Gallery Bot"
           git config user.email "actions@users.noreply.github.com"
-          git add assets/gallery gallery.json
+          git add assets/gallery
+
           if git diff --cached --quiet; then
             echo "No gallery changes."
           else
             git commit -m "Update OneDrive photo gallery"
-            git push
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi
