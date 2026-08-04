@@ -46,7 +46,9 @@ jobs:
       - name: Synchronize OneDrive albums
         run: |
           mkdir -p assets/gallery
-
+      - name: Show downloaded files
+        run: |
+          find assets/gallery -type f
           rclone sync \
             "onedrive:Parma575 Website Photos" \
             "assets/gallery" \
