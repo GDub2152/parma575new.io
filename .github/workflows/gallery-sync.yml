@@ -43,29 +43,21 @@ jobs:
         run: |
           rclone lsf "onedrive:Parma575 Website Photos"
 
-      - name: Synchronize OneDrive albums
-        run: |
+           - name: Synchronize OneDrive albums
+              run: |
           mkdir -p assets/gallery
-      - name: Show downloaded files
-        run: |
-          find assets/gallery -type f
+
           rclone sync \
             "onedrive:Parma575 Website Photos" \
             "assets/gallery" \
-            --include "*/" \
-            --include "*.jpg" \
-            --include "*.JPG" \
-            --include "*.jpeg" \
-            --include "*.JPEG" \
-            --include "*.png" \
-            --include "*.PNG" \
-            --include "*.webp" \
-            --include "*.WEBP" \
-            --include "*.gif" \
-            --include "*.GIF" \
-            --include "*.avif" \
-            --include "*.AVIF" \
-            --exclude "*" \
+            --filter "+ **/*.jpg" \
+            --filter "+ **/*.jpeg" \
+            --filter "+ **/*.png" \
+            --filter "+ **/*.webp" \
+            --filter "+ **/*.gif" \
+            --filter "+ **/*.avif" \
+            --filter "- **" \
+            --delete-excluded \
             --fast-list
 
       - name: Build gallery index
