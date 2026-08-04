@@ -39,8 +39,8 @@ jobs:
           printf '%s' "$RCLONE_CONFIG_CONTENT" > "$HOME/.config/rclone/rclone.conf"
           chmod 600 "$HOME/.config/rclone/rclone.conf"
 
-      - name: Verify OneDrive connection
-        run: |
+            - name: Verify OneDrive connection
+               run: |
           rclone lsf "onedrive:Parma575 Website Photos"
 
            - name: Synchronize OneDrive albums
@@ -51,15 +51,20 @@ jobs:
             "onedrive:Parma575 Website Photos" \
             "assets/gallery" \
             --filter "+ **/*.jpg" \
+            --filter "+ **/*.JPG" \
             --filter "+ **/*.jpeg" \
+            --filter "+ **/*.JPEG" \
             --filter "+ **/*.png" \
+            --filter "+ **/*.PNG" \
             --filter "+ **/*.webp" \
+            --filter "+ **/*.WEBP" \
             --filter "+ **/*.gif" \
+            --filter "+ **/*.GIF" \
             --filter "+ **/*.avif" \
+            --filter "+ **/*.AVIF" \
             --filter "- **" \
             --delete-excluded \
             --fast-list
-
       - name: Build gallery index
         run: |
           python3 scripts/build-gallery.py
