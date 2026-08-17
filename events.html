@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events | Parma575 GMRS Radio Group</title>
+<meta name="description" content="Parma575 GMRS Radio Group">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<section class="page-hero"><h1>Events</h1><p>Club nets, meetings, and community activities.</p></section>
+<section class="section">
+  <div class="container">
+    <div id="events-list" class="events-list"></div>
+    <div class="card" style="margin-top:1.5rem">
+      <h2>Past Events</h2>
+      <p>Previous club activities are preserved in the event archive.</p>
+      <a class="btn btn-blue" href="archive/index.html">View Event Archive</a>
+    </div>
+  </div>
+</section>
+<div id="site-footer"></div>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/events-data.js"></script>
+<script src="assets/js/events-render.js"></script>
+<script>renderParma575Events("events-list", "detail");</script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

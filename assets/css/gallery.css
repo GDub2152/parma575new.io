@@ -1,0 +1,24 @@
+.gallery-page{min-height:55vh}
+.gallery-hero{background:linear-gradient(90deg,rgba(4,12,20,.92),rgba(4,12,20,.58)),url("../images/radio-room.webp") center/cover no-repeat}
+.gallery-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:24px}
+.gallery-heading h2{margin:0;font-size:clamp(28px,4vw,42px)}
+.gallery-summary{margin:6px 0 0;color:var(--muted)}
+.gallery-notice{margin:0 0 24px;padding:18px;border:1px solid rgba(40,169,255,.35);border-radius:12px;background:rgba(40,169,255,.1);color:#dcefff}
+.photo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.photo-card{appearance:none;display:block;width:100%;padding:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#071726;cursor:zoom-in;box-shadow:0 10px 28px rgba(0,0,0,.28);transition:transform .2s ease,border-color .2s ease}
+.photo-card:hover,.photo-card:focus-visible{transform:translateY(-2px);border-color:var(--blue);outline:none}
+.photo-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .25s ease}
+.photo-card:hover img,.photo-card:focus-visible img{transform:scale(1.025)}
+.gallery-empty{grid-column:1/-1;text-align:center;padding:48px 20px;border:1px dashed var(--border);border-radius:14px;color:var(--muted)}
+.gallery-lightbox[hidden]{display:none}
+.gallery-lightbox{position:fixed;inset:0;z-index:5000;display:grid;grid-template-columns:74px minmax(0,1fr) 74px;align-items:center;background:rgba(0,0,0,.94);padding:28px 12px}
+.gallery-lightbox figure{margin:0;display:grid;place-items:center;gap:12px;min-width:0}
+.gallery-lightbox img{max-width:100%;max-height:82vh;object-fit:contain;border-radius:8px;box-shadow:0 24px 70px rgba(0,0,0,.6)}
+.gallery-lightbox figcaption{color:#d7e5f3;text-align:center;max-width:900px;padding:0 10px}
+.lightbox-close,.lightbox-nav{appearance:none;border:0;color:white;background:rgba(255,255,255,.1);cursor:pointer;border-radius:50%;display:grid;place-items:center}
+.lightbox-close{position:absolute;right:18px;top:18px;width:46px;height:46px;font-size:34px;line-height:1}
+.lightbox-nav{width:54px;height:54px;font-size:52px;justify-self:center}
+.lightbox-close:hover,.lightbox-nav:hover{background:rgba(40,169,255,.35)}
+@media(max-width:1050px){.photo-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.gallery-page{padding-top:34px}.gallery-heading{margin-bottom:18px}.photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo-card{border-radius:10px}.gallery-lightbox{grid-template-columns:44px minmax(0,1fr) 44px;padding:70px 2px 18px}.lightbox-nav{width:40px;height:40px;font-size:38px}.gallery-lightbox img{max-height:74vh}.lightbox-close{right:10px;top:10px}}
+@media(max-width:430px){.photo-grid{grid-template-columns:1fr}.photo-card img{aspect-ratio:4/3}.gallery-lightbox{grid-template-columns:38px minmax(0,1fr) 38px}.lightbox-nav{width:36px;height:36px;font-size:34px}}
